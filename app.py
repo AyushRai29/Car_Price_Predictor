@@ -4,6 +4,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
+import matplotlib.pyplot as plt
 
 
 data = pd.read_csv("cardekho_dataset.csv")
@@ -32,3 +33,10 @@ y_pred = np.expm1(y_pred_scaled)
 
 mse = mean_squared_error(y_pred, y_test)
 print("RMSE: ", mse**0.5)
+
+
+plt.scatter(y_test, y_pred)
+plt.plot([y_test.min(), y_test.max()], [y_pred.min(), y_pred.max()], 'r')
+plt.xlabel("Predicted Price")
+plt.ylabel("Actual Price")
+plt.show()
